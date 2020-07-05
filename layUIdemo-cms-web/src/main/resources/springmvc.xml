@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--配置注解扫描-->
+    <context:component-scan base-package="com.demo.controller"/>
+
+    <!--设置静态资源可访问-->
+    <mvc:default-servlet-handler/>
+
+    <!--配置SpringMVC注解支持-->
+    <mvc:annotation-driven/>
+
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/jsp"/>
+    </bean>
+
+    <!--配置拦截器-->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            &lt;!&ndash;配置拦截&ndash;&gt;-->
+<!--            <mvc:mapping path="/video/*"/>-->
+<!--            &lt;!&ndash;配置不拦截：登陆资源和前台页面&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/admin/toLogin"/>-->
+<!--            &lt;!&ndash;配置拦截器对象&ndash;&gt;-->
+<!--            <bean class="com.demo.interception.UnloggedInterception"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+</beans>
