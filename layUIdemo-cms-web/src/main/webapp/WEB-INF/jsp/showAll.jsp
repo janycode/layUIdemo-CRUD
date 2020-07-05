@@ -200,6 +200,7 @@
                 // 重新渲染 select 的 option
                 var array = new Array();
                 var ids = new Array();
+                var defaultOpt = '全部';
                 $("#cls option").each(function () {
                     // 遍历保存 option 的 val 和 text
                     var txt = $(this).text();
@@ -217,12 +218,16 @@
                 jQuery("#cls option:selected").text(option.text());
                 // 回显包含 全部 和其他 option 到选项框
                 var str = "";
+                // 追加到 select 标签内，如果当前是'全部'就不追加
+                if (option.text() !== defaultOpt) {
+                    // value 必须为空格，否则重新查询 全部 时，该选项不会生效
+                    str += "<option value=' '>" + defaultOpt + "</option>";
+                }
+                // 追加其他 option
                 for (var i = 0; i < array.length; i++) {
                     str += "<option value='" + ids[i] + "'>" + array[i] + "</option>";
                 }
-                //layer.msg(str);
-                // 追加到 select 标签内
-                $("#cls").append("<option value=\"\">全部</option>" + str);
+                $("#cls").append(str);
             }
         };
 
